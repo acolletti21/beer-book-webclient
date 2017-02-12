@@ -1,0 +1,28 @@
+<h1>Create Pairing</h1>
+
+<%= form_tag '/pairings', method: :post do%>
+  <div>
+    <%= label_tag  :title %>
+    <%= text_field_tag  :title %>
+  </div>
+
+  <div>
+    <%= label_tag  :author %>
+    <%= text_field_tag  :author %>
+  </div>
+
+  <div>
+    <%= label_tag  :genre %>
+    <%= text_field_tag  :genre %>
+  </div>
+  <div>
+    <%= label_tag  :beer_name %>
+    <%= text_field_tag  :beer_name %>
+  </div>
+  <div>
+    <%= label_tag  :alcohol %>
+    <%= text_field_tag  :alcohol %>
+  </div>
+
+<%= submit_tag "Create" %>
+<%end%>

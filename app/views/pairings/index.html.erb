@@ -1,0 +1,7 @@
+<% @pairings.each do |pairing| %>
+  <p>Book Title: <%= pairing["title"] %></p>
+  <p>Author: <%= pairing["author"] %></p>
+  <p>Genre: <%= pairing["genre"] %></p>
+  <p>Beer: <%= pairing["beer_name"] %></p>
+  <p>ABV: <%= pairing["alcohol"] %></p>
+<%end%>
