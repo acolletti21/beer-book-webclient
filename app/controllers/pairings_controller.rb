@@ -1,6 +1,6 @@
 class PairingsController < ApplicationController
   def index
-    @pairings = Unirest.get("http://localhost:3000/api/v1/pairings.json").body
+    @pairings = Pairing.all
   end
 
   def new
@@ -9,7 +9,7 @@ class PairingsController < ApplicationController
 
   def create
     @pairing = Unirest.post(
-                              "http://localhost:3000/api/v1/pairings",
+                              "#{ ENV['API_HOST_URL'] }/api/v1/pairings",
                               headers:{
                                     "Accept" => "application/json"
                                       },
@@ -22,10 +22,20 @@ class PairingsController < ApplicationController
                                           }
                               ).body
 
-    redirect_to '/pairings/#{pairings[:id]}'
+    redirect_to "/pairings/#{pairings["id"]}"
   end
   
   def show
-    @pairing = Unirest.get("http://localhost:3000/api/v1/pairings/#{params[:id]}.json").body
+    @pairing = Pairing.find(params[:id])
+  end
+
+  def edit
+    @pairing = Unirest.get("#{ ENV['API_HOST_URL'] }/api/v1/pairings.json").body
+  end
+  
+  def destroy
+    @pairing = Pairing.find(params[:id])
+    @pairing.destroy
+    redirect_to '/pairings'
   end
 end
